@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/index.css">
+
+    <title><%= title %></title>
+  </head>
+  <body class="d-flex flex-column h-100">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+      <a class="navbar-brand" href="/"><%= title %></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <% for (let i = 0; i < nav.length; i++) { %>
+            <li class="nav-item">
+              <a class="nav-link" href="/<%= nav[i].link %>"><%= nav[i].title %></a>
+            </li>
+          <% } %>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container pt-5 mt-5">
+      <div class="row justify-content-md-center">
+        <div class="col-6">
+
+          <h5 class="text-center mb-5">Welcome to my library powered by GoodReads, go ahead and search.</h5>
+          <form name="searchForm" action="/" method="GET">
+            <div class="form-group">
+              <label for="query">Find books by title, author, or ISBN.</label>
+              <input type="text" class="form-control" id="query" name="query" placeholder="Enter query..." />
+            </div>
+            <input type="submit" value="Search" class="btn btn-primary" />
+          </form>
+
+        </div>
+      </div>
+
+      <% if (searchResult && searchResult.length) { %>
+        <h5 class="text-center mb-5">Top 20 search results</h5>
+        <div class="row">
+          <% for(let i = 0; i < searchResult.length; i++) { %>
+            <div class="card m-2" style="width: 13rem;">
+              <img src="<%= searchResult[i].best_book.image_url %>" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title"><%= searchResult[i].best_book.title %></h5>
+                <h6 class="card-subtitle mb-2 text-muted"><%= searchResult[i].best_book.author.name %></h6>
+              </div>
+              <div class="card-footer bg-transparent p-0">
+                <a href="/books/<%= searchResult[i].best_book.id._ %>" class="btn btn-link btn-sm w-100">Details</a>
+              </div>
+            </div>
+          <% } %>
+        </div>
+      <% } else { %>
+        <h5 class="text-center mb-5">No results for that query.</h5>
+      <% } %>
+      </div>
+
+    <footer class="mt-auto py-3">
+      <div class="container">
+        <span class="text-muted">Copyright © 2019 MalfiMalfi.</span>
+      </div>
+    </footer>
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+  </body>
+</html>

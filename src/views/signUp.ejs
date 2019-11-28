@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/index.css">
+
+    <title><%= title %></title>
+  </head>
+  <body class="d-flex flex-column h-100">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+      <a class="navbar-brand" href="/"><%= title %></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <% for (let i = 0; i < nav.length; i++) { %>
+            <li class="nav-item">
+              <a class="nav-link" href="/<%= nav[i].link %>"><%= nav[i].title %></a>
+            </li>
+          <% } %>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container pt-5 mt-5">
+      <div class="row justify-content-md-center">
+        <div class="col-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="text-center card-title">Create account</h5>
+              <form name="signUpForm" action="/auth/sign-up" method="POST">
+                <div class="form-group">
+                  <label for="userName">User name</label>
+                  <input type="text" class="form-control" id="userName" name="userName" placeholder="Enter user name" />
+                </div>
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input type="password" class="form-control" id="password" name="password" placeholder="Enter password" />
+                </div>
+                <input type="submit" value="Sign up" class="btn btn-primary float-right" />
+              </form>
+            </div>
+          </div>
+          <div class="text-center">
+            <a href="/auth/sign-in">Sign in</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="mt-auto py-3">
+      <div class="container">
+        <span class="text-muted">Copyright © 2019 MalfiMalfi.</span>
+      </div>
+    </footer>
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+  </body>
+</html>
