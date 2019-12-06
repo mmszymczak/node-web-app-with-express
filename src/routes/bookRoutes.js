@@ -6,10 +6,15 @@ const bookRouter = express.Router();
 
 function router(nav) {
   const {
-    getDetailsById, addToLibrary, toggleBookReadFlag, deleteFromLibrary,
+    idMiddlewear,
+    getDetailsById,
+    addToLibrary,
+    toggleBookReadFlag,
+    deleteFromLibrary,
   } = bookController(bookService, nav);
 
   bookRouter.route('/:id')
+    .all(idMiddlewear)
     .get(getDetailsById)
     .post(addToLibrary)
     .put(toggleBookReadFlag)

@@ -10,6 +10,7 @@ To get the Node server running locally:
 
 - Clone this repo
 - `npm install` to install all required dependencies
+- Create `.env` file and add Goodreads API key
 - Install [MongoDB Community Server](https://www.mongodb.com/download-center/community) and run it by executing `mongod`
 - `npm start` to run the local server
 
@@ -27,7 +28,7 @@ To get the Node server running locally:
 
 ## Application Structure
 
-- `.env` - The central location for environment variables and API keys.
+- `.env.sample` - The sample for `.env` file, as central location for environment variables and API keys.
 - `app.js` - The entry point to the application. This file defines our express server, configure dependencies, and also requires the routes we'll be using in the application.
 - `config/` - This folder contains configuration for passport authentication as well as navigation.
 - `controllers/` - It contains logic for different routes. Functions that get the requested data, create an HTML page filled with the data and return it to the user view.
